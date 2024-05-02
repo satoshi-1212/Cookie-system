@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, g
 import sqlite3
 import math  # math モジュールを追加
-const port = process.env.PORT || 4000;
 
 app = Flask(__name__)
 app.config['DATABASE'] = 'sweets2.db'
