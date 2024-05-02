@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お菓子の材料総量計算</title>
+    <link rel="icon" href="/static/favicon.jpg" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('/static/Cookie1.jpg'); /* 背景画像の設定 */
+            background-size: cover; /* 画像をウィンドウに合わせる */
+            background-repeat: no-repeat; /* 繰り返しを防ぐ */
+            background-position: center;
+        }
+
+        .container {
+            max-width: 400px;
+            width: 90%;
+            background-color: rgba(255, 255, 255, 0.8); /* 背景画像を透過させるために不透明度を設定 */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: calc(50% - 22px);
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            display: block;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* フッタースタイル */
+        footer {
+            color: white;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: rgb(255, 124, 146);
+            padding: 10px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>クッキーの材料計算</h1>
+        <form action="/" method="POST">
+            <label for="num_boxes">製造数量（缶）</label>
+            <input type="number" id="num_boxes" name="num_boxes" required>
+            <button type="submit">計算</button>
+        </form>
+
+        <!-- 修正：計算ボタンの下にリンクを配置 -->
+        <div style="text-align: center;">
+            <a href="/admin/login">管理画面へ</a>
+        </div>
+    </div>
+    
+    <footer>
+        powered by SUNABACO
+    </footer>
+</body>
+</html>

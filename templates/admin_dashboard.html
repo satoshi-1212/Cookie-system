@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理画面ダッシュボード</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 1200px; /* コンテナの幅を変更 */
+            margin: 80px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* 全体をセンター揃え */
+            height: 70vh; /* 画面の高さいっぱいに広げる */
+        }
+        h1, h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed; /* テーブルの幅を固定 */
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            text-align: center; /* テーブルのセルをセンター揃え */
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .logout {
+            text-align: center;
+            margin-top: 20px;
+        }
+        footer {
+            width: 100%;
+            background-color: rgb(255, 124, 146);
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999; /* 必要に応じて他の要素よりも前面に表示 */
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>管理画面ダッシュボード</h1>
+        
+        <!-- レシピ一覧 -->
+        <h2>レシピ一覧</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>レシピ名</th>
+                    <th>入数/缶</th>
+                    <th>単位/枚</th>
+                    <th>小麦粉</th>
+                    <th>豆乳</th>
+                    <th>ココナッツオイル</th>
+                    <th>黒糖</th>
+                    <th>でんぷん</th>
+                    <th>アーモンド</th>
+                    <th>ココア</th>
+                    <th>ラズベリー</th>
+                    <th>レモン</th>
+                    <th>重曹</th>
+                    <th>操作</th> <!-- 追加：修正ボタン用 -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for recipe in recipes %}
+                <tr>
+                    <td>{{ recipe['id'] }}</td>
+                    <td>{{ recipe['name'] }}</td>
+                    <td>{{ recipe['can'] }}</td>
+                    <td>{{ recipe['unit'] }}</td>
+                    <td>{{ recipe['rice_flower'] }}</td>
+                    <td>{{ recipe['soy_milk'] }}</td>
+                    <td>{{ recipe['coconut_oil'] }}</td>
+                    <td>{{ recipe['brown_sugar'] }}</td>
+                    <td>{{ recipe['starch'] }}</td>
+                    <td>{{ recipe['almond'] }}</td>
+                    <td>{{ recipe['cocoa'] }}</td>
+                    <td>{{ recipe['raspberry'] }}</td>
+                    <td>{{ recipe['lemon'] }}</td>
+                    <td>{{ recipe['baking_soda'] }}</td>
+                    <td><a href="/edit_recipe.html?id={{ recipe['id'] }}">修正</a></td> <!-- 修正：ボタンクリック時に修正ページにリダイレクト -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <!-- index.htmlに戻るリンク -->
+        <div class="logout">
+            <p><a href="/">ログアウト</a></p>
+        </div>
+    </div>
+
+    <script>
+        function redirectToEditPage(recipeId) {
+            window.location.href = "/edit_recipe.html?id=" + recipeId; // 修正ページのURLにレシピIDを渡してリダイレクト
+        }
+    </script>
+
+    <footer>
+        powered by SUNABACO
+    </footer>
+
+</body>
+</html>

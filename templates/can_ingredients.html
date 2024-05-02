@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>材料一覧</title>
+    <link rel="icon" href="/static/favicon.jpg" type="image/x-icon">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-image: url('/static/Cookie1.jpg'); /* 背景画像の追加 */
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-y: hidden; /* スクロールバー非表示 */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        .back-btn {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            text-align: center;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* フッタースタイル */
+        footer {
+            color: #fff;
+            margin-top: auto;
+            width: 100%;
+            background-color: rgb(255, 124, 146);
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>材料一覧（単位：g）</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>クッキー名</th>
+                <th>必要数</th>
+                <th>単位</th>
+                <th>米粉</th>
+                <th>豆乳</th>
+                <th>ココナッツオイル</th>
+                <th>黒砂糖</th>
+                <th>デンプン</th>
+                <th>アーモンド</th>
+                <th>ココア</th>
+                <th>ラズベリー</th>
+                <th>レモン</th>
+                <th>重曹</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for recipe in recipes %}
+            <tr>
+                <td>{{ recipe['name'] }}</td>
+                <td>{{ recipe['can'] }}</td>
+                <td>{{ recipe['unit'] }}</td>
+                <td>{{ recipe['rice_flower'] }}</td>
+                <td>{{ recipe['soy_milk'] }}</td>
+                <td>{{ recipe['coconut_oil'] }}</td>
+                <td>{{ recipe['brown_sugar'] }}</td>
+                <td>{{ recipe['starch'] }}</td>
+                <td>{{ recipe['almond'] }}</td>
+                <td>{{ recipe['cocoa'] }}</td>
+                <td>{{ recipe['raspberry'] }}</td>
+                <td>{{ recipe['lemon'] }}</td>
+                <td>{{ recipe['baking_soda'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a class="back-btn" href="/">戻る</a>
+    <footer>
+        powered by SUNABACO
+    </footer>
+
+</body>
+</html>

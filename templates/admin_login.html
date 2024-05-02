@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理画面</title>
+    <link rel="icon" href="/static/favicon.jpg" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* ページ全体を占める */
+            position: relative; /* フッターを固定するために相対位置指定 */
+            background-image: url('/static/Cookie1.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.8); /* 背景画像を透過させるために不透明度を設定 */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .login-container h1 {
+            text-align: center;
+        }
+
+        .login-container form {
+            margin-top: 20px;
+        }
+
+        .login-container form label {
+            display: block;
+            margin-bottom: 5px;
+            text-align: center; /* 追加 */
+        }
+
+        .login-container form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .login-container form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .login-container form button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-to-home {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px; /* 新しく追加 */
+        }
+
+        .back-to-home a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .back-to-home a:hover {
+            text-decoration: underline;
+        }
+
+        /* フッタースタイル */
+        footer {
+            color: white;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: rgb(255, 124, 146);
+            padding: 10px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>管理画面</h1>
+        <form id="login-form" action="/admin" method="POST">
+            <label for="password">パスワード</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit"><i class="fas fa-sign-in-alt"></i> ログイン</button>
+        </form>
+
+        <div class="back-to-home"> <!-- 移動した部分 -->
+            <p><a href="/">トップページへ</a></p>
+        </div>
+    </div>
+
+    <footer>
+        powered by SUNABACO
+    </footer>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            var password = document.getElementById('password').value;
+            if (password !== 'sunabaco') {
+                event.preventDefault();
+                alert('魔法の呪文を言わなきゃだめだよ。');
+                document.getElementById('password').value = ''; // パスワードをクリアする
+            }
+        });
+    </script>
+</body>
+</html>
